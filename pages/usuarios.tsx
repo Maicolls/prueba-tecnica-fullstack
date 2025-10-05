@@ -138,35 +138,65 @@ export default function UsuariosPage() {
   )
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 relative overflow-hidden">
+      {/* Fondo animado */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 right-20 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+      </div>
+
       {/* Navegación */}
-      <nav className="bg-white shadow">
+      <nav className="relative z-10 bg-black/40 backdrop-blur-xl border-b border-green-500/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center space-x-8">
-              <h1 className="text-xl font-semibold">Sistema de Gestión</h1>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                  </svg>
+                </div>
+                <h1 className="text-xl font-bold bg-gradient-to-r from-white to-green-300 bg-clip-text text-transparent">
+                  Sistema de Gestión
+                </h1>
+              </div>
               <div className="flex space-x-4">
                 <button 
                   onClick={() => router.push('/')}
-                  className="text-gray-600 hover:text-gray-900"
+                  className="text-gray-400 hover:text-green-400 transition-colors"
                 >
                   Inicio
                 </button>
                 <button 
                   onClick={() => router.push('/movimientos')}
-                  className="text-gray-600 hover:text-gray-900"
+                  className="text-gray-400 hover:text-green-400 transition-colors"
                 >
                   Movimientos
                 </button>
-                <span className="text-blue-600 font-medium">Usuarios</span>
-                <button className="text-gray-600 hover:text-gray-900">Reportes</button>
+                <span className="text-green-400 font-medium">Usuarios</span>
+                <button 
+                  onClick={() => router.push('/reportes')}
+                  className="text-gray-400 hover:text-green-400 transition-colors"
+                >
+                  Reportes
+                </button>
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-700">Hola, {session.user.name}</span>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center">
+                  <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <span className="text-sm text-gray-300">
+                  Hola, <span className="text-green-400 font-medium">{session.user.name}</span>
+                </span>
+              </div>
               <button
                 onClick={handleLogout}
-                className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm"
+                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
               >
                 Cerrar Sesión
               </button>
@@ -175,14 +205,14 @@ export default function UsuariosPage() {
         </div>
       </nav>
 
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+      <main className="relative z-10 max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
           {/* Header */}
-          <div className="mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-white via-green-200 to-emerald-400 bg-clip-text text-transparent mb-2">
               Gestión de Usuarios
             </h2>
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-400">
               Administra los usuarios del sistema y sus roles
             </p>
           </div>
