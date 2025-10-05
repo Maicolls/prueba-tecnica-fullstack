@@ -21,8 +21,11 @@ model User {
   image         String?
   createdAt     DateTime
   updatedAt     DateTime
+  role          Role      @default(ADMIN)  // Nuevo campo: rol del usuario
+  phone         String?   // Nuevo campo: teléfono del usuario
   sessions      Session[]
   accounts      Account[]
+  movements     Movement[] // Nueva relación: movimientos del usuario
 
   @@unique([email])
   @@map("user")
@@ -71,4 +74,30 @@ model Verification {
   updatedAt  DateTime?
 
   @@map("verification")
+}
+
+// Nuevos enums para la aplicación
+enum Role {
+  USER
+  ADMIN
+}
+
+enum MovementType {
+  INCOME
+  EXPENSE
+}
+
+// Nuevo modelo para movimientos financieros
+model Movement {
+  id          String       @id @default(cuid())
+  concept     String       // Concepto del movimiento
+  amount      Decimal      // Monto del movimiento
+  date        DateTime     // Fecha del movimiento
+  type        MovementType // Tipo: INCOME o EXPENSE
+  userId      String       // ID del usuario que creó el movimiento
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@map("movement")
 }
