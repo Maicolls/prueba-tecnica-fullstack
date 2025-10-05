@@ -332,5 +332,8 @@ Este proyecto es parte de una prueba técnica y está disponible solo para prop�
 ---
 
 **🎯 Status:** ✅ Completamente funcional y listo para producción
+---
+## Imagenes del proyecto
 
+<img width="1365" height="602" alt="Login" src="https://github.com/user-attachments/assets/316ac4cc-c2fa-4a9c-85d7-cdc251d8b51d" />
 
