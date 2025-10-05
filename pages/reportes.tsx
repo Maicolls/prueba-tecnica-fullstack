@@ -43,7 +43,7 @@ export default function ReportesPage() {
             setLoading(true)
             setError(null)
 
-            console.log('🚀 Cargando estadísticas...')
+            console.log(' Cargando estadísticas...')
             const response = await fetch('/api/reports/stats')
 
             if (!response.ok) {
@@ -52,11 +52,11 @@ export default function ReportesPage() {
             }
 
             const data = await response.json()
-            console.log('✅ Estadísticas cargadas:', data)
+            console.log(' Estadísticas cargadas:', data)
 
             setStats(data)
         } catch (err) {
-            console.error('❌ Error cargando estadísticas:', err)
+            console.error(' Error cargando estadísticas:', err)
             setError(err instanceof Error ? err.message : 'Error de conexión')
         } finally {
             setLoading(false)
@@ -77,7 +77,7 @@ export default function ReportesPage() {
         router.push('/login')
     }
     // Función para descargar reporte en CSV
-    // 📊 CSV Mejorado con mejor formato
+    //  CSV Mejorado con mejor formato
     const downloadCSV = () => {
         if (!stats) return
 
@@ -125,7 +125,7 @@ export default function ReportesPage() {
 
 
 
-    // 📄 PDF-ready HTML (abre en nueva pestaña para imprimir)
+    //  PDF-ready HTML (abre en nueva pestaña para imprimir)
     const downloadPDF = () => {
         if (!stats) return
 
@@ -190,7 +190,7 @@ export default function ReportesPage() {
     if (isPending) return <div className="min-h-screen flex items-center justify-center">Cargando...</div>
     if (!session) return null
 
-    // 🎨 MOSTRAR LOADING
+    //  MOSTRAR LOADING
     if (loading) return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center relative overflow-hidden">
             <div className="absolute inset-0">
@@ -204,7 +204,7 @@ export default function ReportesPage() {
         </div>
     )
 
-    // ❌ MOSTRAR ERROR
+    //  MOSTRAR ERROR
     if (error) return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center relative overflow-hidden">
             <div className="absolute inset-0">
@@ -252,19 +252,13 @@ export default function ReportesPage() {
                         {/* Título y navegación */}
                         <div className="flex items-center space-x-8">
                             <div className="flex items-center gap-3">
-                                {/* Logo - Puedes reemplazar el div por tu imagen */}
-                                <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center">
-                                    {/* Opción 1: Con imagen personalizada */}
-                                    {/* <img 
-                                      src="/images/brand/logo.png" 
-                                      alt="Logo" 
-                                      className="w-8 h-8 object-contain"
-                                    /> */}
-                                    
-                                    {/* Opción 2: Icono SVG actual (temporal) */}
-                                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                                    </svg>
+                                {/* Logo personalizado */}
+                                <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center p-1">
+                                    <img 
+                                      src="/images/logos/Logo.png" 
+                                      alt="Logo Sistema de Gestión" 
+                                      className="w-full h-full object-contain"
+                                    />
                                 </div>
                                 <h1 className="text-xl font-bold bg-gradient-to-r from-white to-green-300 bg-clip-text text-transparent">
                                     Sistema de Gestión
@@ -414,11 +408,11 @@ export default function ReportesPage() {
                             </ResponsiveContainer>
                         </div>
                     </div>
-                    {/* 📥 OPCIONES DE EXPORTACIÓN MEJORADAS */}
+                    {/*  OPCIONES DE EXPORTACIÓN MEJORADAS */}
                     <div className="bg-black/40 backdrop-blur-xl border border-green-500/20 p-6 rounded-2xl">
                         <div className="mb-6">
                             <h3 className="text-xl font-bold text-white mb-2 bg-gradient-to-r from-white to-green-300 bg-clip-text text-transparent">
-                                📊 Exportar Reporte
+                                 Exportar Reporte
                             </h3>
                             <p className="text-gray-400 mt-1">Elige el formato que necesites para tu reporte</p>
                         </div>

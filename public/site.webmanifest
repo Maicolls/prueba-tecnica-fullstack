@@ -1,0 +1,26 @@
+{
+  "name": "Sistema de Gestión Financiera",
+  "short_name": "SGF",
+  "description": "Sistema de Gestión Financiera - Control de ingresos y egresos",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#22c55e",
+  "icons": [
+    {
+      "src": "/images/icons/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icons/favicon-32x32.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icons/favicon-32x32.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
