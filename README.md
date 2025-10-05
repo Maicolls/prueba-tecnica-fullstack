@@ -30,7 +30,7 @@ Sistema completo de gestión financiera desarrollado con Next.js, TypeScript y P
 
 1. **Clonar el repositorio**
 ```bash
-git clone <tu-repositorio-url>
+git clone <https://github.com/Maicolls/prueba-tecnica-fullstack.git>
 cd prueba-tecnica-fullstack
 ```
 
@@ -74,7 +74,7 @@ bun dev
 - App: http://localhost:3000 (o puerto disponible)
 - API Docs: http://localhost:3000/docs
 
-## 🏗️ Arquitectura Técnica
+## Arquitectura Técnica
 
 ### Stack Tecnológico
 
@@ -315,14 +315,6 @@ BETTER_AUTH_URL      # URL base de la app
 GITHUB_CLIENT_ID     # OAuth GitHub
 GITHUB_CLIENT_SECRET # OAuth GitHub  
 ```
-
-## 📞 Soporte y Contacto
-
-Para dudas sobre implementación:
-- 📧 mlopera@prevalentware.com
-- 📧 jdsanchez@prevalentware.com  
-- 📧 dfsorza@prevalentware.com
-
 ## ✨ Características Destacadas
 
 - 🚀 **Performance:** Build optimizado, componentes lazy-loaded
@@ -341,6 +333,4 @@ Este proyecto es parte de una prueba técnica y está disponible solo para prop�
 
 **🎯 Status:** ✅ Completamente funcional y listo para producción
 
-**📅 Desarrollado:** Diciembre 2024  
-**🛠️ Stack:** Next.js + TypeScript + PostgreSQL + Better Auth  
-**🚀 Deploy:** Vercel + Supabase
+
