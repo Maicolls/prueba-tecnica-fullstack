@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useSession } from '@/lib/auth/client'
+import Head from 'next/head'
 
 export default function DocsPage() {
   const { data: session, isPending } = useSession()
@@ -42,6 +43,110 @@ export default function DocsPage() {
   }
 
   return (
+    <>
+      <Head>
+        <link 
+          rel="stylesheet" 
+          type="text/css" 
+          href="https://unpkg.com/swagger-ui-dist@5.9.0/swagger-ui.css" 
+        />
+        <style jsx global>{`
+          .swagger-ui {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          }
+          .swagger-ui .topbar {
+            display: none;
+          }
+          .swagger-ui .info {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+          }
+          .swagger-ui .info .title {
+            color: #22c55e;
+          }
+          .swagger-ui .info .description {
+            color: #e5e7eb;
+          }
+          .swagger-ui .scheme-container {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 12px;
+            padding: 10px;
+            margin-bottom: 20px;
+          }
+          .swagger-ui .opblock {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 12px;
+            margin-bottom: 15px;
+          }
+          .swagger-ui .opblock-summary {
+            color: #e5e7eb;
+          }
+          .swagger-ui .opblock-summary-method {
+            background: #22c55e;
+            color: white;
+            border-radius: 6px;
+          }
+          .swagger-ui .opblock-summary-path {
+            color: #22c55e;
+          }
+          .swagger-ui .opblock-description-wrapper p {
+            color: #d1d5db;
+          }
+          .swagger-ui .opblock-section-header {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+          }
+          .swagger-ui .parameters-col_description input {
+            background: rgba(0, 0, 0, 0.8);
+            color: #e5e7eb;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+          }
+          .swagger-ui .btn.try-out__btn {
+            background: #22c55e;
+            color: white;
+            border: none;
+            border-radius: 6px;
+          }
+          .swagger-ui .btn.execute {
+            background: #059669;
+            color: white;
+            border: none;
+            border-radius: 6px;
+          }
+          .swagger-ui .responses-wrapper {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            padding: 15px;
+          }
+          .swagger-ui .response {
+            color: #e5e7eb;
+          }
+          .swagger-ui table {
+            background: rgba(0, 0, 0, 0.6);
+            color: #e5e7eb;
+          }
+          .swagger-ui table th {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+          }
+          .swagger-ui .model-box {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            color: #e5e7eb;
+          }
+          .swagger-ui .model .property {
+            color: #d1d5db;
+          }
+          .swagger-ui .model .property.primitive {
+            color: #22c55e;
+          }
+        `}</style>
+      </Head>
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 relative overflow-hidden">
       {/* Fondo animado */}
       <div className="absolute inset-0">
@@ -99,7 +204,7 @@ export default function DocsPage() {
         )}
 
         {SwaggerUI && !isLoading && !error && (
-          <div className="bg-black/40 backdrop-blur-xl border border-green-500/20 rounded-2xl overflow-hidden">
+          <div className="bg-black/40 backdrop-blur-xl border border-green-500/20 rounded-2xl overflow-hidden p-6">
             <SwaggerUI 
               url="/api/docs"
               docExpansion="list"
@@ -109,10 +214,18 @@ export default function DocsPage() {
               filter={true}
               showExtensions={true}
               showCommonExtensions={true}
+              deepLinking={true}
+              displayOperationId={false}
+              defaultModelExpandDepth={3}
+              defaultModelRendering="example"
+              presets={[]}
+              plugins={[]}
+              supportedSubmitMethods={['get', 'post', 'put', 'delete', 'patch']}
             />
           </div>
         )}
       </div>
     </div>
+    </>
   )
 }

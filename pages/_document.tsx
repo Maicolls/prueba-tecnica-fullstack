@@ -3,7 +3,7 @@ import { Html, Head, Main, NextScript} from 'next/document';
 const Document = () => (
   <Html lang='es'>
     <Head>
-      {/* Favicon - Usando el icono personalizado */}
+     
       <link rel="icon" type="image/png" href="/images/icons/favicon-32x32.png" />
       <link rel="shortcut icon" type="image/png" href="/images/icons/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-32x32.png" />
@@ -12,7 +12,6 @@ const Document = () => (
       <link rel="icon" type="image/png" sizes="192x192" href="/images/icons/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="512x512" href="/images/icons/favicon-32x32.png" />
       
-      {/* Web App Manifest */}
       <link rel="manifest" href="/site.webmanifest" />
       
       {/* Meta tags */}
