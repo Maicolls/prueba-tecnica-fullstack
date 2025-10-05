@@ -29,14 +29,14 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 relative overflow-hidden">
-      {/* Fondo animado */}
+      
       <div className="absolute inset-0">
         <div className="absolute top-20 right-20 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 left-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
       </div>
 
-      {/* Navegación */}
+      {/* Navigation */}
       <nav className="relative z-10 bg-black/40 backdrop-blur-xl border-b border-green-500/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
@@ -74,7 +74,7 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* Contenido principal */}
+      {/* main content */}
       <main className="relative z-10 max-w-7xl mx-auto py-8 sm:px-6 lg:px-8">
         <div className="px-4 py-6 sm:px-0">
           {/* Header */}
@@ -87,9 +87,9 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Tarjetas de navegación */}
+          {/* Navigation Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Movimientos */}
+            {/* Styles */}
             <div className="group bg-black/40 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8 hover:border-green-500/40 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-[0_0_30px_rgba(34,197,94,0.2)]">
               <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -111,7 +111,7 @@ export default function HomePage() {
               </button>
             </div>
 
-            {/* Usuarios */}
+            {/* User */}
             <div className="group bg-black/40 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8 hover:border-green-500/40 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-[0_0_30px_rgba(34,197,94,0.2)]">
               <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -133,7 +133,7 @@ export default function HomePage() {
               </button>
             </div>
 
-            {/* Reportes */}
+            {/* Reports */}
             <div className="group bg-black/40 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8 hover:border-green-500/40 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-[0_0_30px_rgba(34,197,94,0.2)]">
               <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -159,7 +159,7 @@ export default function HomePage() {
           {/* Footer info */}
           <div className="mt-12 text-center">
             <p className="text-gray-500 text-sm">
-              🔒 Sesión segura • 📊 Datos en tiempo real • 🚀 Rendimiento optimizado
+               Sesión segura • Datos en tiempo real • Rendimiento optimizado
             </p>
           </div>
         </div>

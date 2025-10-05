@@ -20,13 +20,13 @@ export default function UsuariosPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  // Función para cargar usuarios desde la API
+  //Function to load users from the API
   const fetchUsers = async () => {
     try {
       setLoading(true)
       setError(null)
       
-      console.log('🚀 Iniciando fetch a /api/users...')
+      console.log('Iniciando fetch a /api/users...')
       const response = await fetch('/api/users', {
         method: 'GET',
         headers: {
@@ -34,7 +34,7 @@ export default function UsuariosPage() {
         },
       })
       
-      console.log('📡 Respuesta recibida:', response.status)
+      console.log(' Respuesta recibida:', response.status)
       
       if (!response.ok) {
         const errorData = await response.json()
@@ -42,7 +42,7 @@ export default function UsuariosPage() {
       }
       
       const data = await response.json()
-      console.log('✅ Datos recibidos:', data)
+      console.log(' Datos recibidos:', data)
       
       setUsers(data.users || [])
       setError(null)
@@ -78,7 +78,7 @@ export default function UsuariosPage() {
     
     if (editingUser) {
       try {
-        // 🚀 AQUÍ ES DONDE ENVIAMOS A LA API
+        // Send information to API
         const response = await fetch('/api/users', {
           method: 'PUT',
           headers: {
@@ -97,7 +97,7 @@ export default function UsuariosPage() {
           throw new Error(data.error || 'Error al actualizar usuario')
         }
 
-        // ✅ SI TODO SALE BIEN, recargar la lista
+        // Update to reload the list
         await fetchUsers()
         setShowEditForm(false)
         setEditingUser(null)
@@ -112,24 +112,37 @@ export default function UsuariosPage() {
   if (isPending) return <div className="min-h-screen flex items-center justify-center">Cargando...</div>
   if (!session) return null
 
-  // 🎨 MOSTRAR LOADING MIENTRAS CARGA USUARIOS
+  // Display loading while fetching users
   if (loading) return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
-        <p className="mt-4">Cargando usuarios...</p>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center relative overflow-hidden">
+      <div className="absolute inset-0">
+        <div className="absolute top-20 right-20 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+      <div className="text-center relative z-10">
+        <div className="animate-spin rounded-full h-16 w-16 border-4 border-green-500/20 border-t-green-400 mx-auto"></div>
+        <p className="mt-4 text-green-400 font-medium">Cargando usuarios...</p>
       </div>
     </div>
   )
 
-  // ❌ MOSTRAR ERROR SI HAY PROBLEMAS
+  // Display error if there are issues
   if (error) return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="text-center text-red-600">
-        <p>Error: {error}</p>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center relative overflow-hidden">
+      <div className="absolute inset-0">
+        <div className="absolute top-20 right-20 w-96 h-96 bg-red-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-red-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+      <div className="text-center relative z-10 bg-black/40 backdrop-blur-xl border border-red-500/20 rounded-2xl p-8 max-w-md mx-4">
+        <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <p className="text-red-400 mb-4">Error: {error}</p>
         <button 
           onClick={fetchUsers}
-          className="mt-4 bg-blue-600 text-white px-4 py-2 rounded"
+          className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white px-6 py-3 rounded-xl font-medium transition-all duration-200 transform hover:scale-105"
         >
           Reintentar
         </button>
@@ -139,14 +152,14 @@ export default function UsuariosPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 relative overflow-hidden">
-      {/* Fondo animado */}
+
       <div className="absolute inset-0">
         <div className="absolute top-20 right-20 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 left-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
       </div>
 
-      {/* Navegación */}
+      {/* Navigation */}
       <nav className="relative z-10 bg-black/40 backdrop-blur-xl border-b border-green-500/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
@@ -217,45 +230,45 @@ export default function UsuariosPage() {
             </p>
           </div>
 
-          {/* Tabla de usuarios */}
-          <div className="bg-white shadow overflow-hidden sm:rounded-md">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+          {/* Table of users */}
+          <div className="bg-black/40 backdrop-blur-xl border border-green-500/20 rounded-2xl overflow-hidden">
+            <table className="min-w-full divide-y divide-green-500/20">
+              <thead className="bg-black/50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-medium text-green-400 uppercase tracking-wider">
                     Nombre
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-medium text-green-400 uppercase tracking-wider">
                     Correo
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-medium text-green-400 uppercase tracking-wider">
                     Teléfono
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-medium text-green-400 uppercase tracking-wider">
                     Rol
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-medium text-green-400 uppercase tracking-wider">
                     Acciones
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="divide-y divide-green-500/10">
                 {users.map((user) => (
-                  <tr key={user.id}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  <tr key={user.id} className="hover:bg-green-500/5 transition-colors">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-200">
                       {user.name}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
                       {user.email}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
                       {user.phone || 'No especificado'}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
+                      <span className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
                         user.role === 'ADMIN' 
-                          ? 'bg-purple-100 text-purple-800' 
-                          : 'bg-gray-100 text-gray-800'
+                          ? 'bg-purple-500/20 text-purple-300' 
+                          : 'bg-gray-500/20 text-gray-300'
                       }`}>
                         {user.role}
                       </span>
@@ -263,7 +276,7 @@ export default function UsuariosPage() {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <button
                         onClick={() => handleEditUser(user)}
-                        className="text-indigo-600 hover:text-indigo-900"
+                        className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105"
                       >
                         Editar
                       </button>
@@ -276,54 +289,56 @@ export default function UsuariosPage() {
         </div>
       </main>
 
-      {/* Modal del formulario de edición */}
+      {/* Modal form for editing user */}
       {showEditForm && editingUser && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center">
-          <div className="bg-white p-8 rounded-lg shadow-xl max-w-md w-full">
-            <h3 className="text-lg font-medium mb-4">Editar Usuario</h3>
-            <form onSubmit={handleSaveUser} className="space-y-4">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm overflow-y-auto h-full w-full flex items-center justify-center z-50">
+          <div className="bg-black/80 backdrop-blur-xl border border-green-500/20 p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4">
+            <h3 className="text-2xl font-bold text-white mb-6 bg-gradient-to-r from-white to-green-300 bg-clip-text text-transparent">
+              Editar Usuario
+            </h3>
+            <form onSubmit={handleSaveUser} className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700">Nombre</label>
+                <label className="block text-sm font-medium text-green-400 mb-2">Nombre</label>
                 <input
                   name="name"
                   type="text"
                   defaultValue={editingUser.name}
-                  className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
+                  className="w-full bg-black/50 border border-green-500/30 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:border-green-400 focus:ring-2 focus:ring-green-400/20 focus:outline-none transition-all"
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700">Correo</label>
+                <label className="block text-sm font-medium text-green-400 mb-2">Correo</label>
                 <input
                   type="email"
                   defaultValue={editingUser.email}
-                  className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-100"
+                  className="w-full bg-black/30 border border-green-500/20 rounded-xl px-4 py-3 text-gray-400 cursor-not-allowed"
                   disabled
                 />
-                <p className="text-xs text-gray-500 mt-1">El correo no se puede modificar</p>
+                <p className="text-xs text-gray-500 mt-2">El correo no se puede modificar</p>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700">Rol</label>
+                <label className="block text-sm font-medium text-green-400 mb-2">Rol</label>
                 <select 
                   name="role"
                   defaultValue={editingUser.role}
-                  className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2"
+                  className="w-full bg-black/50 border border-green-500/30 rounded-xl px-4 py-3 text-white focus:border-green-400 focus:ring-2 focus:ring-green-400/20 focus:outline-none transition-all"
                 >
-                  <option value="USER">Usuario</option>
-                  <option value="ADMIN">Administrador</option>
+                  <option value="USER" className="bg-gray-800">Usuario</option>
+                  <option value="ADMIN" className="bg-gray-800">Administrador</option>
                 </select>
               </div>
-              <div className="flex justify-end space-x-3">
+              <div className="flex justify-end space-x-3 pt-4">
                 <button
                   type="button"
                   onClick={() => setShowEditForm(false)}
-                  className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+                  className="px-6 py-3 border border-green-500/30 rounded-xl text-gray-300 hover:bg-green-500/10 transition-all duration-200"
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                  className="px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white rounded-xl font-medium transition-all duration-200 transform hover:scale-105"
                 >
                   Guardar Cambios
                 </button>

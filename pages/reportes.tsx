@@ -192,22 +192,35 @@ export default function ReportesPage() {
 
     // 🎨 MOSTRAR LOADING
     if (loading) return (
-        <div className="min-h-screen flex items-center justify-center">
-            <div className="text-center">
-                <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
-                <p className="mt-4">Cargando estadísticas...</p>
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center relative overflow-hidden">
+            <div className="absolute inset-0">
+                <div className="absolute top-20 right-20 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-20 left-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            </div>
+            <div className="text-center relative z-10">
+                <div className="animate-spin rounded-full h-16 w-16 border-4 border-green-500/20 border-t-green-400 mx-auto"></div>
+                <p className="mt-4 text-green-400 font-medium">Cargando estadísticas...</p>
             </div>
         </div>
     )
 
     // ❌ MOSTRAR ERROR
     if (error) return (
-        <div className="min-h-screen flex items-center justify-center">
-            <div className="text-center text-red-600">
-                <p>Error: {error}</p>
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center relative overflow-hidden">
+            <div className="absolute inset-0">
+                <div className="absolute top-20 right-20 w-96 h-96 bg-red-500/10 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-20 left-20 w-80 h-80 bg-red-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            </div>
+            <div className="text-center relative z-10 bg-black/40 backdrop-blur-xl border border-red-500/20 rounded-2xl p-8 max-w-md mx-4">
+                <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <p className="text-red-400 mb-4">Error: {error}</p>
                 <button
                     onClick={fetchStats}
-                    className="mt-4 bg-blue-600 text-white px-4 py-2 rounded"
+                    className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white px-6 py-3 rounded-xl font-medium transition-all duration-200 transform hover:scale-105"
                 >
                     Reintentar
                 </button>
@@ -225,149 +238,220 @@ export default function ReportesPage() {
 
     // UN SOLO RETURN
     return (
-        <div className="min-h-screen bg-gray-50">
-            <nav className="bg-white shadow">
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 relative overflow-hidden">
+            {/* Fondo animado */}
+            <div className="absolute inset-0">
+                <div className="absolute top-20 right-20 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-20 left-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+            </div>
+
+            <nav className="relative z-10 bg-black/40 backdrop-blur-xl border-b border-green-500/20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         {/* Título y navegación */}
                         <div className="flex items-center space-x-8">
-                            <h1 className="text-xl font-semibold">Sistema de Gestión</h1>
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center">
+                                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                                    </svg>
+                                </div>
+                                <h1 className="text-xl font-bold bg-gradient-to-r from-white to-green-300 bg-clip-text text-transparent">
+                                    Sistema de Gestión
+                                </h1>
+                            </div>
                             <div className="flex space-x-4">
-                                <button onClick={() => router.push('/')}>Inicio</button>
-                                <button onClick={() => router.push('/movimientos')}>Movimientos</button>
-                                <button onClick={() => router.push('/usuarios')}>Usuarios</button>
-                                <span className="text-blue-600 font-medium">Reportes</span>
+                                <button 
+                                    onClick={() => router.push('/')}
+                                    className="text-gray-400 hover:text-green-400 transition-colors"
+                                >
+                                    Inicio
+                                </button>
+                                <button 
+                                    onClick={() => router.push('/movimientos')}
+                                    className="text-gray-400 hover:text-green-400 transition-colors"
+                                >
+                                    Movimientos
+                                </button>
+                                <button 
+                                    onClick={() => router.push('/usuarios')}
+                                    className="text-gray-400 hover:text-green-400 transition-colors"
+                                >
+                                    Usuarios
+                                </button>
+                                <span className="text-green-400 font-medium">Reportes</span>
                             </div>
                         </div>
                         {/* Usuario y logout */}
                         <div className="flex items-center space-x-4">
-                            <span>Hola, {session.user.name}</span>
-                            <button onClick={handleLogout}>Cerrar Sesión</button>
+                            <div className="flex items-center gap-3">
+                                <div className="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center">
+                                    <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                    </svg>
+                                </div>
+                                <span className="text-sm text-gray-300">
+                                    Hola, <span className="text-green-400 font-medium">{session.user.name}</span>
+                                </span>
+                            </div>
+                            <button
+                                onClick={handleLogout}
+                                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
+                            >
+                                Cerrar Sesión
+                            </button>
                         </div>
                     </div>
                 </div>
             </nav>
 
             {/* Contenido principal */}
-            <main className="max-w-7xl mx-auto py-6">
+            <main className="relative z-10 max-w-7xl mx-auto py-6">
                 <div className="px-4 py-6">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-6">Reportes y Estadísticas</h2>
+                    <h2 className="text-3xl font-bold bg-gradient-to-r from-white via-green-200 to-emerald-400 bg-clip-text text-transparent mb-8">
+                        Reportes y Estadísticas
+                    </h2>
                     {/* Tarjetas de resumen */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                         {/* Tarjeta de Ingresos */}
-                        <div className="bg-white p-6 rounded-lg shadow">
+                        <div className="bg-black/40 backdrop-blur-xl border border-green-500/20 p-6 rounded-2xl hover:border-green-500/40 transition-all duration-300">
                             <div className="flex items-center">
                                 <div className="flex-1">
-                                    <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                    <h3 className="text-sm font-medium text-green-400 uppercase tracking-wider mb-2">
                                         Total Ingresos
                                     </h3>
-                                    <p className="text-2xl font-bold text-green-600">
+                                    <p className="text-3xl font-bold text-green-300">
                                         ${displayData.totalIngresos.toLocaleString()}
                                     </p>
                                 </div>
                                 <div className="ml-4">
-                                    <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                                        <span className="text-green-600 font-bold">↗</span>
+                                    <div className="w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center">
+                                        <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                        </svg>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         {/* Tarjeta de Egresos */}
-                        <div className="bg-white p-6 rounded-lg shadow">
+                        <div className="bg-black/40 backdrop-blur-xl border border-red-500/20 p-6 rounded-2xl hover:border-red-500/40 transition-all duration-300">
                             <div className="flex items-center">
                                 <div className="flex-1">
-                                    <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                    <h3 className="text-sm font-medium text-red-400 uppercase tracking-wider mb-2">
                                         Total Egresos
                                     </h3>
-                                    <p className="text-2xl font-bold text-red-600">
+                                    <p className="text-3xl font-bold text-red-300">
                                         ${displayData.totalEgresos.toLocaleString()}
                                     </p>
                                 </div>
                                 <div className="ml-4">
-                                    <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
-                                        <span className="text-red-600 font-bold">↘</span>
+                                    <div className="w-12 h-12 bg-red-500/20 rounded-2xl flex items-center justify-center">
+                                        <svg className="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+                                        </svg>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         {/* Tarjeta de Saldo */}
-                        <div className="bg-white p-6 rounded-lg shadow">
+                        <div className="bg-black/40 backdrop-blur-xl border border-blue-500/20 p-6 rounded-2xl hover:border-blue-500/40 transition-all duration-300">
                             <div className="flex items-center">
                                 <div className="flex-1">
-                                    <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                    <h3 className="text-sm font-medium text-blue-400 uppercase tracking-wider mb-2">
                                         Saldo Actual
                                     </h3>
-                                    <p className="text-2xl font-bold text-blue-600">
+                                    <p className="text-3xl font-bold text-blue-300">
                                         ${displayData.saldo.toLocaleString()}
                                     </p>
                                 </div>
                                 <div className="ml-4">
-                                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                                        <span className="text-blue-600 font-bold">💰</span>
+                                    <div className="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center">
+                                        <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                                        </svg>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="bg-white p-6 rounded-lg shadow mb-6">
-                        <h3 className="text-lg font-medium mb-4">Movimientos por Mes</h3>
+                    <div className="bg-black/40 backdrop-blur-xl border border-green-500/20 p-6 rounded-2xl mb-8">
+                        <h3 className="text-xl font-bold text-white mb-6 bg-gradient-to-r from-white to-green-300 bg-clip-text text-transparent">
+                            Movimientos por Mes
+                        </h3>
                         <div className="h-80">
                             <ResponsiveContainer width="100%" height="100%">
                                 <BarChart data={displayData.movimientosPorMes}>
-                                    <CartesianGrid strokeDasharray="3 3" />
-                                    <XAxis dataKey="mes" />
-                                    <YAxis />
+                                    <CartesianGrid strokeDasharray="3 3" stroke="#22c55e20" />
+                                    <XAxis dataKey="mes" stroke="#9ca3af" />
+                                    <YAxis stroke="#9ca3af" />
                                     <Tooltip
                                         formatter={(value, name) => [
                                             `$${value.toLocaleString()}`,
                                             name === 'ingresos' ? 'Ingresos' : 'Egresos'
                                         ]}
+                                        contentStyle={{
+                                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                            border: '1px solid rgba(34, 197, 94, 0.2)',
+                                            borderRadius: '12px',
+                                            color: '#ffffff'
+                                        }}
                                     />
-                                    <Bar dataKey="ingresos" fill="#10B981" name="ingresos" />
-                                    <Bar dataKey="egresos" fill="#EF4444" name="egresos" />
+                                    <Bar dataKey="ingresos" fill="#22c55e" name="ingresos" radius={[4, 4, 0, 0]} />
+                                    <Bar dataKey="egresos" fill="#ef4444" name="egresos" radius={[4, 4, 0, 0]} />
                                 </BarChart>
                             </ResponsiveContainer>
                         </div>
                     </div>
                     {/* 📥 OPCIONES DE EXPORTACIÓN MEJORADAS */}
-                    <div className="bg-white p-6 rounded-lg shadow">
-                        <div className="mb-4">
-                            <h3 className="text-lg font-medium text-gray-900">📊 Exportar Reporte</h3>
-                            <p className="text-gray-600 mt-1">Elige el formato que necesites para tu reporte</p>
+                    <div className="bg-black/40 backdrop-blur-xl border border-green-500/20 p-6 rounded-2xl">
+                        <div className="mb-6">
+                            <h3 className="text-xl font-bold text-white mb-2 bg-gradient-to-r from-white to-green-300 bg-clip-text text-transparent">
+                                📊 Exportar Reporte
+                            </h3>
+                            <p className="text-gray-400 mt-1">Elige el formato que necesites para tu reporte</p>
                         </div>
                         
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* CSV - Excel */}
-                            <div className="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition-colors">
-                                <div className="flex items-center mb-2">
-                                    <span className="text-2xl mr-2">📊</span>
-                                    <h4 className="font-medium">CSV / Excel</h4>
+                            <div className="bg-black/30 border border-green-500/30 rounded-xl p-6 hover:border-green-400 transition-all duration-300 hover:bg-green-500/5">
+                                <div className="flex items-center mb-4">
+                                    <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mr-3">
+                                        <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                        </svg>
+                                    </div>
+                                    <h4 className="font-semibold text-white">CSV / Excel</h4>
                                 </div>
-                                <p className="text-sm text-gray-600 mb-3">
+                                <p className="text-sm text-gray-400 mb-4">
                                     Formato compatible con Excel y Google Sheets
                                 </p>
                                 <button
                                     onClick={downloadCSV}
-                                    className="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                                    className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 transform hover:scale-105"
                                 >
                                     Descargar CSV
                                 </button>
                             </div>
 
                             {/* PDF - Impresión */}
-                            <div className="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition-colors">
-                                <div className="flex items-center mb-2">
-                                    <span className="text-2xl mr-2">🖨️</span>
-                                    <h4 className="font-medium">PDF / Imprimir</h4>
+                            <div className="bg-black/30 border border-red-500/30 rounded-xl p-6 hover:border-red-400 transition-all duration-300 hover:bg-red-500/5">
+                                <div className="flex items-center mb-4">
+                                    <div className="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center mr-3">
+                                        <svg className="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                        </svg>
+                                    </div>
+                                    <h4 className="font-semibold text-white">PDF / Imprimir</h4>
                                 </div>
-                                <p className="text-sm text-gray-600 mb-3">
+                                <p className="text-sm text-gray-400 mb-4">
                                     Vista optimizada para impresión
                                 </p>
                                 <button
                                     onClick={downloadPDF}
-                                    className="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                                    className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 transform hover:scale-105"
                                 >
                                     Ver PDF
                                 </button>
