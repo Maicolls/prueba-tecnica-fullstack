@@ -334,6 +334,7 @@ Este proyecto es parte de una prueba técnica y está disponible solo para prop�
 **🎯 Status:** ✅ Completamente funcional y listo para producción
 ---
 ## Imagenes del proyecto
+--
 **Login 
 <img width="1365" height="602" alt="Login" src="https://github.com/user-attachments/assets/316ac4cc-c2fa-4a9c-85d7-cdc251d8b51d" />
 --
@@ -342,11 +343,9 @@ Este proyecto es parte de una prueba técnica y está disponible solo para prop�
 --
 ** Movimientos
 <img width="1362" height="596" alt="movimientos " src="https://github.com/user-attachments/assets/c71e4d15-eb59-41c8-bb94-1dc5ffd0f130" />
-
 --
 ** Usuarios
 <img width="1364" height="606" alt="Usuarios" src="https://github.com/user-attachments/assets/d3a457fc-5c18-4dac-a4da-24a1be30184c" />
-
 --
 ** Reportes
 <img width="1195" height="594" alt="Reportes" src="https://github.com/user-attachments/assets/a74df9d9-44a2-4949-a5a0-40b1a4000a2f" />
